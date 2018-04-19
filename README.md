@@ -7,6 +7,6 @@ A tweets classifier which can scrap data without use of any Twitrer API making i
 ```
 1>IShmeet
 2> Harjot
-3> Minor contribution by AWAL * ~ free advice * .
+3> Minor contribution by AWAL  _~ free advice_ .
 
 ```
