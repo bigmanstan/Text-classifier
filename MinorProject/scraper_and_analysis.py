@@ -8,6 +8,7 @@
 
 from datetime import datetime
 from json import dump
+from MinorProject import sentiment_analysis
 # from os.path import isfile  # imported but unused
 import collections
 import csv  # library for reading/writing CSV
@@ -119,8 +120,22 @@ def scrape_and_analyze():
 
         def get_label(analysis, threshold=0):
             if analysis.sentiment[0] > threshold:
+                image = "happy.png"
+                msg = "Public opinion is generally happy?"
+                choices = ["Try for another word"]
+                reply = g.buttonbox(msg, image=image, choices=choices)
+                if button == choices[0]:
+                    sentiment_analysis
+
                 return 'Positive'
             elif analysis.sentiment[0] < threshold:
+                image1 = "sadt.png"
+                msg1 = "Public opinion is generally negative?"
+                choices1 = ["Try for another word"]
+                reply = g.buttonbox(msg1, image=image1, choices=choices1)
+                if button == choices1[0]:
+                    scrape_and_analyze()
+
                 return 'Negative'
             else:
                 return 'Neutral'
