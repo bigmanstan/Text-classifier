@@ -18,7 +18,7 @@ import json  # library for manipulating JSON files
 import sys
 import webbrowser
 
-from textblob import TextBlob  # library for sentiment analysis
+from import TextBlob  # library for sentiment analysis
 from twitterscraper import query_tweets  # library for scraping
 # from twitterscraper.query import query_all_tweets  # imported but unused
 
@@ -81,8 +81,8 @@ def scrape_and_analyze():
 
     query = fieldValues[0]
     account = fieldValues[1]
-    starting_date = fieldValues[2]
-    ending_date = fieldValues[3]
+    starting_date = "2018-04-14"
+    ending_date = "2018-04-15"
     limit = int(fieldValues[4])
     output2 = fieldValues[5]
 
@@ -124,8 +124,8 @@ def scrape_and_analyze():
                 msg = "Public opinion is generally happy?"
                 choices = ["Try for another word"]
                 reply = g.buttonbox(msg, image=image, choices=choices)
-                if button == choices[0]:
-                    sentiment_analysis
+                if reply == choices[0]:
+                    scrape_and_analyze()
 
                 return 'Positive'
             elif analysis.sentiment[0] < threshold:
@@ -133,7 +133,7 @@ def scrape_and_analyze():
                 msg1 = "Public opinion is generally negative?"
                 choices1 = ["Try for another word"]
                 reply = g.buttonbox(msg1, image=image1, choices=choices1)
-                if button == choices1[0]:
+                if reply == choices1[0]:
                     scrape_and_analyze()
 
                 return 'Negative'
@@ -153,5 +153,5 @@ def scrape_and_analyze():
     else:
         csv_out.close()  # saves the file and closes it
         print('Thank you for using this program')
-        sys.exit('goodbye')  # end program
+        sys.exit( )  # end program
 scrape_and_analyze()
